@@ -1,5 +1,7 @@
 from django.core.management.base import BaseCommand
 
+
+# proposed command = py manage.py greetin name
 class Command(BaseCommand):
     help = "greets the user"
     
