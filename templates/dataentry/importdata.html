@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Automation</title>
+</head>
+<body>
+    <div class="container">
+        <h3 class="text-center">import data to the database table</h3>
+        <form method="post" enctype="multipart/form-data" style="width: 600px; margin: auto; padding-top: 20px;">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="">Upload csv file</label>
+                <input type="file" name="file_path" id="" class="form-control">
+            </div>
+
+            <div class="form-group" style="padding-bottom: 8px; padding-top: 8px;">
+                <label for="">Select database</label>
+                <select name="model_name" id="" class="form-control">
+                    <option value="" disabled selected>select</option>
+                    {% for model in custom_models %}
+                    <option value="{{ model }}">{{ model }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <input type="submit" value="submit" class="btn btn-primary">
+        </form>
+    </div>
+</body>
+</html>
