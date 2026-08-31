@@ -3,6 +3,7 @@ from .utils import get_all_models
 from uploads.models import Upload
 from django.conf import settings
 from django.core.management import call_command
+from django.contrib import messages
 
 def import_data(request):
     if request.method == "POST":
@@ -19,8 +20,9 @@ def import_data(request):
         # trigger the command
         try:
             call_command('importdata', absolute_path, model_name)
+            messages.success(request, "Import was success!")
         except Exception as e:
-            raise e    
+            messages.error(request, str(e))    
         
         return redirect('import_data')
     else:
@@ -28,5 +30,5 @@ def import_data(request):
         context = {
             'custom_models': custom_models
         }
-
+        
     return render(request, 'dataentry/importdata.html', context)
