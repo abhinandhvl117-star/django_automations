@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from django.apps import apps
 import csv
 import datetime
+from dataentry.utils import generate_csv_file
 
 # proposed command - py manage.py exportdata model_name
 
@@ -28,8 +29,8 @@ class Command(BaseCommand):
             return
         
         data = model.objects.all()
-        timestamp = datetime.datetime.now().strftime("%Y-%m-%d")
-        file_name = f'exported_{model_name}_data_{timestamp}.csv'
+
+        file_name = generate_csv_file(model_name)
         
         with open(file_name, 'w', newline='') as file:
             writer = csv.writer(file)
