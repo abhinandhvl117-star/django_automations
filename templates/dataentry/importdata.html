@@ -1,18 +1,7 @@
-{% load static %}
+{% extends 'base.html' %}
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="{% static 'js/custom.js' %}"></script>
-    <title>Automation</title>
-</head>
-<body>
-    <div class="container">
+    <div class="container alert-dark shadow" style="max-width: 800px; padding: 50px; margin-top: 100px; border-radius: 10px;">
         <h3 class="text-center">import data to the database table</h3>
         <form method="post" enctype="multipart/form-data" style="width: 600px; margin: auto; padding-top: 20px;">
             {% csrf_token %}
@@ -30,11 +19,13 @@
                     {% endfor %}
                 </select>
             </div>
-
-            <input type="submit" value="submit" class="btn btn-primary">
+            
+            <div class="form-group">
+            <input type="submit" value="submit" class="btn btn-dark">
+            </div>
             {% include "dataentry/alert.html" %}
         </form>
         
     </div>
-</body>
-</html>
+
+{% endblock %}

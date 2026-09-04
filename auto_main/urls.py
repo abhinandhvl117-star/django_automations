@@ -25,4 +25,9 @@ urlpatterns = [
     path('', home, name='home'),
     path('dataentry/', include('dataentry.urls')),
     path('celery-test', celery_test),
+    
+    # registration and login
+    path('register/', register, name='register'),
+    path('login/', login_user, name='login'),
+    path('logout/', logout_user, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
